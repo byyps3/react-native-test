@@ -1,7 +1,8 @@
 import React from 'react'
 import { createForm, Form } from '@formily/core'
 import { FormProvider, createSchemaField, ISchemaFieldReactFactoryOptions, ISchema } from '@formily/react'
-import { InputRef } from './form/StringRef'
+import { Input } from './form/Input'
+import { FormControl } from './form/FormControl'
 
 interface IBaseForm {
   form?: Form<any>
@@ -13,7 +14,8 @@ export const form = createForm()
 
 const SchemaField = createSchemaField({
   components: {
-    InputRef,
+    Input,
+    FormControl,
   },
 })
 

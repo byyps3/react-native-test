@@ -58,11 +58,11 @@ const App = () => {
   };
 
   const init = async () => {
-    console.log(777)
-    console.log(777)
-    console.log(777)
-    console.log(await form.submit())
-    console.log(888)
+    try {
+      console.log(await form.submit())
+    } catch (error) {
+      
+    }
   }
 
   return (
@@ -90,19 +90,15 @@ const App = () => {
                   title: "姓名",
                   type: 'string',
                   required: true,
-                  'x-component': 'InputRef',
-                },
-                aaa: {
-                  title: "姓名",
-                  type: 'InputRef',
-                  required: true,
-                  // 'x-component': 'InputRef',
+                  'x-decorator': 'FormControl',
+                  'x-component': 'Input',
                 },
                 ccc: {
-                  title: "姓名",
-                  type: 'InputRef',
+                  title: "ccc",
+                  type: 'string',
                   required: true,
-                  // 'x-component': 'InputRef',
+                  'x-decorator': 'FormControl',
+                  'x-component': 'Input',
                 },
               }
             }} />
