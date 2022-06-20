@@ -1,8 +1,9 @@
 import React from 'react';
 import _ from 'lodash';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, useColorScheme } from 'react-native';
 import { ArrowBackIcon } from 'native-base'
 import { connect, mapProps } from '@formily/react'
+import _Const from '../../../../const/_Const';
 
 interface IrightMenus {
   onPress: Function
@@ -14,10 +15,15 @@ export interface INav {
   canGoBack: boolean,
   rightMenus?: Array<IrightMenus>,
   numberOfLines: number,
+  backgroundColor: string
 }
 
 const Nav = (props: INav) => {
-  let backgroundColor = 'white';
+  const isDarkMode = useColorScheme() !== 'dark';
+  let backgroundColor = null
+  if (isDarkMode) backgroundColor = props.backgroundColor || _Const.MainColor;
+  else backgroundColor = 'white';
+
   return (
     <View
       style={{
@@ -26,7 +32,7 @@ const Nav = (props: INav) => {
         flexDirection: 'row',
         alignItems: 'center',
         minHeight: 45,
-        backgroundColor: backgroundColor,
+        backgroundColor,
         zIndex: 1,
       }}>
       <View
@@ -42,7 +48,7 @@ const Nav = (props: INav) => {
             }}>
             <ArrowBackIcon
               name='arrow-back'
-              // color='white'
+              color={isDarkMode ? 'white' : '#333'}
               size={18}
             />
           </TouchableOpacity>
@@ -53,7 +59,7 @@ const Nav = (props: INav) => {
         style={{
           flex: 1,
           width: '100%',
-          color: 'red',
+          color: isDarkMode ? 'white' : '#333',
           paddingLeft: 12,
           paddingRight: 6,
           fontSize: 16,
