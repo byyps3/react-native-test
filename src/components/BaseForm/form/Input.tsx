@@ -4,11 +4,22 @@ import { connect, mapReadPretty, mapProps } from '@formily/react'
 import { Text } from 'react-native';
 import { Input as NBInput } from 'native-base'
 
-const BaseInput: React.FC<React.PropsWithChildren<any>> = props => {
-  const { placeholder, onChange } = props
+export interface IBaseInput {
+  selfInvalid?: boolean, // 是否无效
+  selfDisplay: boolean, // 是否禁用
+  required?: boolean, // 是否必填
+  onChange: Function, // formily自动桥接方法
+  placeholder: string, // 输入提示
+}
+
+const BaseInput: React.FC<React.PropsWithChildren<IBaseInput>> = props => {
+  const { placeholder, onChange, selfDisplay, required, selfInvalid } = props
   return <NBInput
+  isInvalid={selfInvalid}
   placeholder={placeholder}
-  onChangeText={onChange} />
+  isDisabled={selfDisplay}
+  isRequired={required}
+  onChangeText={(e) => onChange(e)} />
 }
 export const Input = connect(
   BaseInput,
