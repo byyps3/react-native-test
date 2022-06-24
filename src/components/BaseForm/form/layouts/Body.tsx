@@ -8,8 +8,8 @@ import {
   Dimensions,
   Button
 } from 'react-native';
-import Loading from '../../../common/Loading';
-import Empty from '../../../common/Empty';
+import Loading from '../../base/Loading';
+import Empty from '../../base/Empty';
 import { connect, mapProps } from '@formily/react'
 
 export interface IBody {

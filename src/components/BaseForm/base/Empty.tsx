@@ -30,7 +30,7 @@ const Empty = (props: IEmpty) => {
 			/>
 			<Text style={{marginTop: 20, color: "#888", marginBottom: 20}}>{props.title}</Text>
 			{
-				_.isEmpty(props.extra)?null:props.extra
+				_.isEmpty(props.extra) ? null : props.extra
 			}
 		</View>
 	)

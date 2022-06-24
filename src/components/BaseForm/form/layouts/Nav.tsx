@@ -4,6 +4,7 @@ import { View, Text, TouchableOpacity, useColorScheme } from 'react-native';
 import { ArrowBackIcon } from 'native-base'
 import { connect, mapProps } from '@formily/react'
 import _Const from '../../../../const/_Const';
+import { useNavigationState, useNavigation } from '@react-navigation/native';
 
 interface IrightMenus {
   onPress: Function
@@ -16,6 +17,7 @@ export interface INav {
   rightMenus?: Array<IrightMenus>,
   numberOfLines: number,
   backgroundColor: string
+  navigation?: any
 }
 
 const Nav = (props: INav) => {
@@ -23,6 +25,8 @@ const Nav = (props: INav) => {
   let backgroundColor = null
   if (isDarkMode) backgroundColor = props.backgroundColor || _Const.MainColor;
   else backgroundColor = 'white';
+  const routesLength = useNavigationState(state => state.routes.length);
+  const navigation = useNavigation();
 
   return (
     <View
@@ -37,9 +41,9 @@ const Nav = (props: INav) => {
       }}>
       <View
         style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-        {props.canGoBack ? (
+        {props.canGoBack && routesLength > 1 ? (
           <TouchableOpacity
-            // onPress={Actions.pop}
+            onPress={() => navigation.goBack()}
             style={{
               flexDirection: 'row',
               alignItems: 'center',
