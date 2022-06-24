@@ -12,7 +12,7 @@ import { FormFooter } from './form/layouts/Footer'
 interface IBaseForm {
   form?: Form<any>
   other?: ISchemaFieldReactFactoryOptions
-  schema: ISchema
+  schema?: ISchema
 }
 
 export const form = createForm()
