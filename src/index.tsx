@@ -42,6 +42,10 @@ const Index = (props: IIndex) => {
                 ccc: {
                   title: "ccc",
                   type: 'string',
+                  maximum: 7,
+                  'x-validator': {
+                    minimum: 5,
+                  },
                   required: true,
                   'x-decorator': 'FormControl',
                   'x-component': 'Input',
