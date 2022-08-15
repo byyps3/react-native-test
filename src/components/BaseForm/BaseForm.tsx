@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { createForm, Form } from '@formily/core'
 import { FormProvider, createSchemaField, ISchemaFieldReactFactoryOptions, ISchema } from '@formily/react'
 import { Input } from './form/Input'
@@ -30,6 +30,17 @@ const SchemaField = createSchemaField({
 })
 
 export const BaseForm: React.FC<IBaseForm> = props => {
+  // const [data, setData] = useState()
+  // useEffect(() => {
+  //   init()
+  // },[])
+  // const init = async () => {
+  //   try {
+  //     const res = await 
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
   return (
     <FormProvider form={form}>
       <SchemaField
